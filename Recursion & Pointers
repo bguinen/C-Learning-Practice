@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int sum(int n);
+
+int main(int argc, char *argv[])
+{
+    if(argc != 2)
+    {
+        printf("Please only type one integer\n");
+        return 1;
+    }
+    else
+    {
+        int arg_num = atoi(argv[1]);
+        if(arg_num > 0)
+        {
+            int *sum_num;
+            sum_num = &arg_num;
+            printf("The sum of all lower positive integers is %d\n", sum(*sum_num));
+            return 0;
+        }
+        else
+        {
+        printf("Invalid Input, only use Positive integers.\n");
+        return 1;
+        }
+    }
+}
+
+int sum(int n)
+    {
+        if(n == 1)
+            return 1;
+        else
+            return n + sum(n-1);
+    }
