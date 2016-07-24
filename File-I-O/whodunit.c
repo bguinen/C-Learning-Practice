@@ -4,7 +4,7 @@
  * Computer Science 50
  * Problem Set 4
  * 
- * Most of this code was created for the CS50 "Intro to Computer Science" course offered by Harvard's edX program. 
+ * Most of this code was created for the CS50 course offered by Harvard's edX program. 
  * The only lines that I added are 85-89. This was however a tremendous learning experience in terms of File I/O, 
  * using MSDN, and file structure for media (JPG, BMP, GIF, PNG, ect.).
  *
