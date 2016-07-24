@@ -8,7 +8,7 @@
  * The only lines that I added are 85-89. This was however a tremendous learning experience in terms of File I/O, 
  * using MSDN, and file structure for media (JPG, BMP, GIF, PNG, ect.).
  *
- * Copies a BMP piece by piece, just because.
+ * Copies a BMP file and changes 0000ff pixels to ffffff.
  */
        
 #include <stdio.h>
