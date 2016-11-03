@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct list
+{
+    int a;
+    struct list *next;
+}Node;
+
+Node* create(int a);
+
+int main(void)
+{
+    Node *ptr;
+    ptr = create(5);
+    printf("value stored in Node is %i\n address of node in memory is %p\n", ptr->a, ptr);
+    free(ptr);
+}
+
+Node* create(int a)
+{
+    Node *ptr;
+    ptr = (Node*)malloc(sizeof(Node));
+    ptr->a=a;
+    return ptr;
+}
