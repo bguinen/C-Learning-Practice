@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+/*
+* Really basic program i wrote to help me better understand
+* the underlying mechanics of linked lists. 
+*/
+struct Point
+{
+  int x, y;
+};
+
+struct Point* create(int x, int y);
+
+int main(void)
+{
+    struct Point* ptr;
+    ptr=create(5,10);
+    printf("%i, %i\n", ptr->x, ptr->y);
+    free(ptr);
+    return 0;
+    
+}
+
+struct Point* create(int x, int y)
+{
+    struct Point *ptr;
+    ptr=(struct Point*)malloc(sizeof(struct Point));
+    if(!ptr)
+    {
+        printf("ERROR - Not enough memory\n");
+        return 0;
+    }
+    ptr->x=x;
+    ptr->y=y;
+    return ptr;
+}
