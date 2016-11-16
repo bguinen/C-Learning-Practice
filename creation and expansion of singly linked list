@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//define struct for Nodes
+typedef struct list
+{
+    int data;
+    int key;
+    struct list* next;
+}Node;
+
+//function declarations
+Node* create(int a, int counter);
+void insert(int a, int counter);
+void printlist();
+
+
+//global pointers
+Node* Head = NULL;
+Node* Current = NULL;
+
+int main(int argc, char** argv)
+{
+    int keycounter = 0;// malloc(sizeof(int));
+    int value = 0;//malloc(sizeof(int));
+    
+    Head=create(value, keycounter);
+    value++;
+    keycounter++;
+    insert(value, keycounter);
+    value++;
+    keycounter++;
+    insert(value, keycounter);
+    printlist();
+
+    free(Head);
+    free(Current);
+    
+   // free(keycounter);
+   // free(value);
+    return 0;
+}
+
+Node* create(int a, int counter)
+{
+    Node* ptr=malloc(sizeof(Node));
+    if(!ptr)
+    {
+        printf("ERROR-NOT ENOUGH MEMORY\n");
+        return 0;
+    }
+        ptr->data=a;
+        ptr->key=counter;
+        
+        return ptr;
+    
+}
+
+void insert(int a, int counter)
+{
+    Node* ptr=malloc(sizeof(Node));
+    if(!ptr)
+        printf("ERROR-NOT ENOUGH MEMORY\n");
+    ptr->data=a;
+    ptr->key=counter;
+    
+    //point next field to old head
+    ptr->next=Head;
+    
+    //assign current node as head of singly linked list
+    Head=ptr;
+}
+
+void printlist()
+{
+    Node* ptr=Head;
+    printf("TESTING\n");
+    while(ptr != NULL) {
+        printf("%p*NODE* KEY:%i VALUE:%i PTR NEXT:%p\n \n", ptr, ptr->key, ptr->data, ptr->next);
+        ptr=ptr->next;
+    }
+}
