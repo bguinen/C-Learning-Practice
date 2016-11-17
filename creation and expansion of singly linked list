@@ -71,6 +71,9 @@ void insert(int a, int counter)
     Head=ptr;
 }
 
+
+//Thank you guys over at tutorialspoint for this neat idea for testing this.
+//https://www.tutorialspoint.com/data_structures_algorithms/linked_list_program_in_c.htm
 void printlist()
 {
     Node* ptr=Head;
