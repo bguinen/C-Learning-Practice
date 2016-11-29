@@ -10,8 +10,9 @@ typedef struct list
 }Node;
 
 //function declarations
-Node* create(int a, int counter);
-void insert(int a, int counter);
+Node* create(int a, int *counter);
+void insert(int a, int *counter);
+void delete_list();
 void printlist();
 
 
@@ -19,59 +20,65 @@ void printlist();
 Node* Head = NULL;
 Node* Current = NULL;
 
-int main(int argc, char** argv)
+
+int main()
 {
-    int keycounter = 0;// malloc(sizeof(int));
-    int value = 0;//malloc(sizeof(int));
-    
+    int *keycounter =(int*)malloc(sizeof(int));
+    int value = 20;
+    keycounter = 0;
     Head=create(value, keycounter);
-    value++;
-    keycounter++;
+    value = 30;
     insert(value, keycounter);
-    value++;
-    keycounter++;
+    value = 40;
     insert(value, keycounter);
     printlist();
+    delete_list();
 
-    free(Head);
-    free(Current);
-    
-   // free(keycounter);
-   // free(value);
+    free(keycounter);
     return 0;
 }
+// VV functions VV
+void delete_list()
+{
+    free(Head);
+    free(Current);
+}
 
-Node* create(int a, int counter)
+Node* create(int a, int *counter)
 {
     Node* ptr=malloc(sizeof(Node));
     if(!ptr)
     {
         printf("ERROR-NOT ENOUGH MEMORY\n");
+        free(ptr);
         return 0;
     }
         ptr->data=a;
-        ptr->key=counter;
+        ptr->key=*counter;
+        counter++;
         
-        return ptr;
+        return ptr; 
     
 }
 
-void insert(int a, int counter)
+void insert(int a, int *counter)
 {
     Node* ptr=malloc(sizeof(Node));
-    if(!ptr)
+    if(!ptr) {
         printf("ERROR-NOT ENOUGH MEMORY\n");
+        free(ptr);
+    }
     ptr->data=a;
-    ptr->key=counter;
+    ptr->key=*counter;
     
     //point next field to old head
     ptr->next=Head;
     
     //assign current node as head of singly linked list
     Head=ptr;
+    counter++;
 }
-
-
+  
 //Thank you guys over at tutorialspoint for this neat idea for testing this.
 //https://www.tutorialspoint.com/data_structures_algorithms/linked_list_program_in_c.htm
 void printlist()
